@@ -10,7 +10,7 @@ import SubImage from "./subimages";
 class Product extends Component {
   state = {
     selectedImageUrl: "https://i.postimg.cc/htWpbH6Y/remote.png",
-    productHoverState: "product-card shadow mb-1 mt-5",
+    productHoverState: "product-card shadow mb-1 mt-4",
   };
 
   handleImageSelect = (selectedImage) => {
@@ -18,11 +18,11 @@ class Product extends Component {
   };
 
   handleProductFocus = () => {
-    this.setState({ productHoverState: "product-card shadow-lg mb-1 mt-4" });
+    this.setState({ productHoverState: "product-card shadow-lg mb-1 mt-3" });
   };
 
   handleProductUnfocus = () => {
-    this.setState({ productHoverState: "product-card shadow mb-1 mt-5" });
+    this.setState({ productHoverState: "product-card shadow mb-1 mt-4" });
   };
 
   render() {
