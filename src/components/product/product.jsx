@@ -1,15 +1,11 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowLeft,
-  faHeart,
-  faStar,
-} from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 import SubImage from "./subimages";
 
 class Product extends Component {
   state = {
-    selectedImageUrl: "https://i.postimg.cc/htWpbH6Y/remote.png",
+    selectedImageUrl: "",
     productHoverState: "product-card shadow mb-1 mt-4",
   };
 
@@ -25,8 +21,34 @@ class Product extends Component {
     this.setState({ productHoverState: "product-card shadow mb-1 mt-4" });
   };
 
+  displaySubImages = () => {
+    const { images } = this.props;
+    return images.map((image) => {
+      return (
+        <SubImage
+          imageUrl={image.imageUrl}
+          onImageSelect={this.handleImageSelect}
+          alt="test"
+        ></SubImage>
+      );
+    });
+  };
+
+  getMainImageUrl() {
+    const { images } = this.props;
+    const imageUrl = images.find((image) => image.isMainImage === true)
+      .imageUrl;
+    console.log("imageUrlvalue", imageUrl);
+    return imageUrl;
+  }
+
+  componentDidMount() {
+    this.setState({ selectedImageUrl: this.getMainImageUrl() });
+  }
+
   render() {
     const { selectedImageUrl, productHoverState } = this.state;
+    const { name, seller, description, price } = this.props;
     return (
       <React.Fragment>
         <div
@@ -45,33 +67,12 @@ class Product extends Component {
               </div>
             </div>
             <div className="product-content-2">
-              <div className="sub-image">
-                <SubImage
-                  imageUrl="https://i.postimg.cc/htWpbH6Y/remote.png"
-                  onImageSelect={this.handleImageSelect}
-                  alt="test"
-                ></SubImage>
-                <SubImage
-                  imageUrl="https://i.postimg.cc/Vv24hT6d/remote1.png"
-                  onImageSelect={this.handleImageSelect}
-                  alt="test"
-                ></SubImage>
-                <SubImage
-                  imageUrl="https://i.postimg.cc/ZKywNT73/remote2.png"
-                  onImageSelect={this.handleImageSelect}
-                  alt="test"
-                ></SubImage>
-                <SubImage
-                  imageUrl="https://i.postimg.cc/4408nK5s/remote3.png"
-                  onImageSelect={this.handleImageSelect}
-                  alt="test"
-                ></SubImage>
-              </div>
+              <div className="sub-image">{this.displaySubImages()}</div>
             </div>
             <div className="product-content-3">
               <div className="branding">
-                <span>Dualshock 4 controller</span>
-                <h4>Playstation</h4>
+                <span>{name}</span>
+                <h4>{seller}</h4>
               </div>
               <div className="ratings">
                 <span>
@@ -91,12 +92,12 @@ class Product extends Component {
                 </span>
               </div>
               <div className="paragraph">
-                The DualShock 4 (CUH-ZCT1) is the PlayStation 4's controller...
+                {description}
                 <span>Read More</span>
               </div>
               <div className="price">
                 <span>$</span>
-                <span>55</span>
+                <span>{price}</span>
                 <div className="space"></div>
                 <a href="#">ADD TO CART</a>
               </div>
