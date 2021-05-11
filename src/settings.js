@@ -1,2 +1,2 @@
 export const BASE_API_URL =
-  process.env.BASE_API_URL || "http://localhost:3002/api";
+  process.env.REACT_APP_BASE_API_URL || "http://localhost:3002/api";
