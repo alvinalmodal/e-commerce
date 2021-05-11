@@ -27,11 +27,12 @@ jobs:
 
       - name: Install packages
         run: npm install
-        env:
-          BASE_API_URL: "https://e-commerce-web-api.herokuapp.com/api"
+
       - name: Deploy
         run: |
           git config --global user.email ${{ secrets.E_COMMERCE_EMAIL }}
           git config --global user.name ${{ secrets.E_COMMERCE_USERNAME }}
           git remote set-url origin https://${{ secrets.E_COMMERCE_ACCESS_TOKEN }}@github.com/${{ secrets.E_COMMERCE_USERNAME }}/e-commerce.git
           npm run deploy
+        env:
+          BASE_API_URL: "https://e-commerce-web-api.herokuapp.com/api"
