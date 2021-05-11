@@ -26,6 +26,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install packages
         run: npm install
+        env:
+          BASE_API_URL: "https://e-commerce-web-api.herokuapp.com/api"
       - name: Build App
         run: npm run build
       - name: Deploy
@@ -33,5 +35,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
-        env:
-          BASE_API_URL: ${{ secrets.BASE_API_URL }}
