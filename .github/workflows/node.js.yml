@@ -30,7 +30,7 @@ jobs:
         run: |
           git config --global user.email ${{secrets.E_COMMERCE_EMAIL}}
           git config --global user.name ${{secrets.E_COMMERCE_USERNAME}}
-          git remote set-url origin https://${{secrets.E_COMMERCE_ACCESS_TOKEN}}@github.com/${{secrets.GITHUB_USERNAME}}/e-commerce.git  
+          git remote set-url origin https://github.com/${{secrets.E_COMMERCE_USERNAME}}/e-commerce
           npm run deploy
         env:
           BASE_API_URL: ${{secrets.BASE_API_URL}}
