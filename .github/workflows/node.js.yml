@@ -24,11 +24,13 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
+          repo-token: ${{ secrets.E_COMMERCE_ACCESS_TOKEN }}
       - name: Install packages
         run: npm install
         env:
           BASE_API_URL: "https://e-commerce-web-api.herokuapp.com/api"
-      - name: Build App
-        run: npm run build
       - name: Deploy
-        run: npm run deploy
+        run: |
+          git config --global user.email ${{ secrets.E_COMMERCE_EMAIL }}
+          git config --global user.name ${{ secrets.E_COMMERCE_USERNAME }}
+          npm run deploy
