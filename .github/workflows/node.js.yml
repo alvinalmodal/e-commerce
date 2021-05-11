@@ -12,9 +12,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    - uses: actions/labeler@v2
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+
     strategy:
       matrix:
         node-version: [12.x, 14.x, 15.x]
@@ -26,6 +24,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
+
       - name: Install packages
         run: npm install
         env:
@@ -34,4 +33,5 @@ jobs:
         run: |
           git config --global user.email ${{ secrets.E_COMMERCE_EMAIL }}
           git config --global user.name ${{ secrets.E_COMMERCE_USERNAME }}
+          git remote set-url origin https://${{ secrets.E_COMMERCE_ACCESS_TOKEN }}@github.com/${{ secrects.E_COMMERCE_USERNAME }}/e-commerce.git
           npm run deploy
