@@ -11,6 +11,7 @@ import NotFound from "./components/not-found";
 function App() {
   return (
     <div className="App container-fluid">
+      <h1>{process.env.REACT_APP_BASE_API_URL}</h1>
       <Navigation></Navigation>
       <Switch>
         <Route path="/cart" render={(props) => <Cart></Cart>}></Route>

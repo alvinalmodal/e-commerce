@@ -35,4 +35,4 @@ jobs:
           git remote set-url origin https://${{ secrets.E_COMMERCE_ACCESS_TOKEN }}@github.com/${{ secrets.E_COMMERCE_USERNAME }}/e-commerce.git
           npm run deploy
         env:
-          REACT_APP_BASE_API_URL: "https://e-commerce-web-api.herokuapp.com/api"
+          REACT_APP_BASE_API_URL: ${{ secrets.REACT_APP_BASE_API_URL }}
