@@ -5,9 +5,11 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+const routerBaseName = process.env.PUBLIC_URL;
+
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={routerBaseName}>
       <App />
     </BrowserRouter>
   </React.StrictMode>,
