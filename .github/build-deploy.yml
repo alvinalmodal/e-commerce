@@ -55,3 +55,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
+      - name: setup env variables
+        env:
+          BASE_API_URL: $BASE_API_URL
