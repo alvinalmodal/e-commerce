@@ -13,18 +13,21 @@ function App() {
     <div className="App container-fluid">
       <Navigation></Navigation>
       <Switch>
-        <Route path="/cart" render={(props) => <Cart></Cart>}></Route>
-        <Route path="/account" render={(props) => <Account></Account>}></Route>
+        <Route path="e-commerce/cart" render={(props) => <Cart></Cart>}></Route>
         <Route
-          path="/not-found"
+          path="e-commerce/account"
+          render={(props) => <Account></Account>}
+        ></Route>
+        <Route
+          path="e-commerce/not-found"
           render={(props) => <NotFound></NotFound>}
         ></Route>
         <Route
-          path="/products"
+          path="e-commerce/products"
           render={(props) => <Products></Products>}
         ></Route>
         <Route path="/" exact render={(props) => <Products></Products>}></Route>
-        <Redirect to="/not-found"></Redirect>
+        <Redirect to="e-commerce/not-found"></Redirect>
       </Switch>
     </div>
   );

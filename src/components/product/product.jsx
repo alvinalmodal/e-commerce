@@ -99,7 +99,7 @@ class Product extends Component {
                 <span>$</span>
                 <span>{price}</span>
                 <div className="space"></div>
-                <a href="#">ADD TO CART</a>
+                <a href="/products">ADD TO CART</a>
               </div>
             </div>
           </div>
